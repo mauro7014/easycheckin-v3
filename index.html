@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyCheckin | Acceso</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- ✅ SUPABASE BIEN CARGADO -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- ✅ CONFIG PRIMERO -->
+    <script src="js/config.js" defer></script>
+
+    <!-- ✅ LÓGICA DESPUÉS -->
+    <script src="js/auth.js" defer></script>
+
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        footer {
+            margin-top: auto;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 style="color:#2563EB;">EasyCheckIn</h1>
+        <h2 id="auth-title">Bienvenido</h2>
+
+        <div id="auth-form">
+            <input type="text" id="full_name" placeholder="Nombre completo" style="display:none">
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="password" id="password" placeholder="Contraseña" required>
+
+            <button id="btn-auth-action">Entrar</button>
+
+            <p id="toggle-auth-mode" style="cursor:pointer; color:#007bff; margin-top:15px;">
+                ¿No tenés cuenta? Registrate
+            </p>
+        </div>
+    </div>
+
+    <footer>
+        Powered by NeoFlux
+    </footer>
+
+</body>
+</html>

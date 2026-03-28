@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>EasyCheckIn | Panel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="padding: 20px;">
+    <div class="container wide">
+        <header style="display: flex; justify-content: space-between; align-items: center;">
+            <h1 id="owner-name">Cargando...</h1>
+            <button onclick="logout()" style="width:auto; background:#FF3B30;">Cerrar Sesión</button>
+        </header>
+        <div class="card" style="text-align: center; margin: 20px 0;">
+            <h3>Tu QR de Registro</h3>
+            <div id="qrcode" style="display: flex; justify-content: center; margin: 20px;"></div>
+            <p id="qr-link" style="font-size: 11px; color: #2563EB;"></p>
+        </div>
+        <div class="card">
+            <h3>Historial de Check-ins</h3>
+            <table>
+                <thead>
+                    <tr><th>Huésped</th><th>Documento</th><th>Fecha</th></tr>
+                </thead>
+                <tbody id="checkins-body"></tbody>
+            </table>
+        </div>
+    </div>
+    <!-- ORDEN CRÍTICO DE SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net"></script>
+    <script src="https://cdnjs.cloudflare.com"></script>
+    <script src="js/config.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

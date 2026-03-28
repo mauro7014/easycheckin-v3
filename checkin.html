@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8"><title>Check-in | Registro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body style="display:flex; justify-content:center; align-items:center; min-height:100vh;">
+    <div class="card" style="max-width: 400px; width: 100%;">
+        <h2 style="text-align:center;">Registro de Huésped</h2>
+        <form id="checkin-form">
+            <input type="text" id="g-name" placeholder="Nombre completo" required>
+            <input type="text" id="g-doc" placeholder="DNI / Pasaporte" required>
+            <input type="date" id="g-in" required>
+            <button type="submit" id="btn-pay" style="margin-top:20px;">Confirmar Check-in</button>
+            <p style="text-align:center; font-size:11px; color:#94a3b8;">🔒 Pago de 1€ procesado automáticamente</p>
+        </form>
+    </div>
+    <!-- ORDEN CRÍTICO DE SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net"></script>
+    <script src="https://cdnjs.cloudflare.com"></script>
+    <script src="js/config.js"></script>
+    <script src="js/checkin.js"></script>
+</body>
+</html>
