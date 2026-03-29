@@ -1,24 +1,31 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8"><title>Check-in | Registro</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Check-in Huésped</title>
 </head>
-<body style="display:flex; justify-content:center; align-items:center; min-height:100vh;">
-    <div class="card" style="max-width: 400px; width: 100%;">
-        <h2 style="text-align:center;">Registro de Huésped</h2>
-        <form id="checkin-form">
-            <input type="text" id="g-name" placeholder="Nombre completo" required>
-            <input type="text" id="g-doc" placeholder="DNI / Pasaporte" required>
-            <input type="date" id="g-in" required>
-            <button type="submit" id="btn-pay" style="margin-top:20px;">Confirmar Check-in</button>
-            <p style="text-align:center; font-size:11px; color:#94a3b8;">🔒 Pago de 1€ procesado automáticamente</p>
-        </form>
-    </div>
-    <!-- ORDEN CRÍTICO DE SCRIPTS -->
-    <script src="https://cdn.jsdelivr.net"></script>
-    <script src="https://cdnjs.cloudflare.com"></script>
-    <script src="js/config.js"></script>
-    <script src="js/checkin.js"></script>
+<body>
+<h2>Check-in Huésped</h2>
+<input type="text" id="guest_name" placeholder="Nombre completo">
+<input type="text" id="guest_dni" placeholder="DNI">
+<button id="checkin">Hacer Check-in</button>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const qr = urlParams.get('qr'); // ID del propietario / departamento
+
+document.getElementById('checkin').onclick = async () => {
+  const guest_name = document.getElementById('guest_name').value;
+  const guest_dni = document.getElementById('guest_dni').value;
+
+  const res = await fetch('/api/checkin', {
+    method: 'POST',
+    headers:{'Content-Type':'application/json'},
+    body: JSON.stringify({qr, guest_name, guest_dni})
+  });
+  const data = await res.json();
+  alert(data.message);
+};
+</script>
 </body>
 </html>
