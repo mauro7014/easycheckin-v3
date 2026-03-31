@@ -1,50 +1,28 @@
-const btnAction = document.getElementById('btn-auth-action');
-const nameInput = document.getElementById('full_name');
-let isLogin = true;
+const btnRegister = document.getElementById("btn-register");
+const msg = document.getElementById("msg");
 
-document.getElementById('toggle-auth-mode').onclick = () => {
-    isLogin = !isLogin;
-    nameInput.style.display = isLogin ? "none" : "block";
-    btnAction.innerText = isLogin ? "Entrar" : "Registrarse";
-};
+btnRegister.addEventListener("click", async () => {
+    const full_name = document.getElementById("full_name").value;
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
 
-btnAction.onclick = async () => {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-
-    btnAction.disabled = true;
-
-    try {
-        if (isLogin) {
-            const { error } = await window.sb.auth.signInWithPassword({
-                email,
-                password
-            });
-
-            if (error) throw error;
-
-            window.location.href = 'dashboard.html';
-
-        } else {
-            const { data, error } = await window.sb.auth.signUp({
-                email,
-                password
-            });
-
-            if (error) throw error;
-
-            await window.sb.from('owners').insert([{
-                user_id: data.user.id,
-                full_name: nameInput.value,
-                email: email
-            }]);
-
-            alert("Registrado. Confirmá el email y entrá.");
-            location.reload();
-        }
-
-    } catch (err) {
-        alert(err.message);
-        btnAction.disabled = false;
+    if (!full_name || !email || !password) {
+        msg.textContent = "Todos los campos son obligatorios.";
+        return;
     }
-};
+
+    const { data, error } = await supabase.auth.signUp({
+        email: email,
+        password: password,
+        options: {
+            data: { full_name: full_name }
+        }
+    });
+
+    if (error) {
+        msg.textContent = `Error: ${error.message}`;
+    } else {
+        msg.textContent = "Registro exitoso. Revisa tu correo para confirmar.";
+        console.log("Usuario registrado:", data.user);
+    }
+});

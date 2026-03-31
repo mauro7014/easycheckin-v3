@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EasyCheckIn | Acceso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Crea tu cuenta</h1>
+        <input type="text" id="full_name" placeholder="Nombre completo">
+        <input type="email" id="email" placeholder="Correo electrónico">
+        <input type="password" id="password" placeholder="Contraseña">
+        <button id="btn-register">Registrarse</button>
+        <p id="msg"></p>
+    </div>
+
+    <!-- Librería Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.37.0/dist/supabase.min.js"></script>
+
+    <!-- Configuración -->
+    <script src="js/config.js"></script>
+
+    <!-- Lógica de Auth -->
+    <script src="js/auth.js"></script>
+</body>
+<script>
+console.log("HTML cargado");
+</script>
+</html>
